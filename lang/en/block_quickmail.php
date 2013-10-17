@@ -54,6 +54,9 @@ $string['qm_contents'] = 'Download File Contents';
 
 // Config form strings
 $string['allowstudents'] = 'Allow students to use Quickmail';
+// BEGIN UCLA MOD CCLE-4166
+$string['allowstudentsdesc'] = 'If enabled, instructors have the option of allowing their students to use the quickmail block.';
+// END UCLA MOD CCLE-4166
 $string['select_roles'] = 'Roles to filter by';
 $string['reset'] = 'Restore System Defaults';
 

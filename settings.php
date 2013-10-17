@@ -8,13 +8,21 @@ if($ADMIN->fulltree) {
     require_once $CFG->dirroot . '/blocks/quickmail/lib.php';
 
     $select = array(0 => get_string('no'), 1 => get_string('yes'));
-
-    $allow = quickmail::_s('allowstudents');
-    $settings->add(
-        new admin_setting_configselect('block_quickmail_allowstudents',
-            $allow, $allow, 0, $select
-        )
-    );
+    
+    // BEGIN UCLA MOD CCLE-4166
+    $settings->add(new admin_setting_configcheckbox_with_lock(
+                            'block_quickmail/allowstudents',
+                            new lang_string('allowstudents', 'block_quickmail'),
+                            new lang_string('allowstudentsdesc', 'block_quickmail'),
+                            array('value' => 0, 'locked' => 1))
+                   );
+    //$allow = quickmail::_s('allowstudents');
+    //$settings->add(
+    //    new admin_setting_configselect('block_quickmail_allowstudents',
+    //        $allow, $allow, 0, $select
+    //    )
+    //);
+    // END UCLA MOD-4166
 
     $roles = $DB->get_records('role', null, 'sortorder ASC');
 

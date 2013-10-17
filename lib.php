@@ -207,6 +207,17 @@ abstract class quickmail {
             );
         }
 
+        // BEGIN UCLA MOD CCLE-4166
+        // Check site-level configuration table for allowstudents.
+        $siteallow = get_config('block_quickmail', 'allowstudents');
+        $sitelocked = get_config('block_quickmail', 'allowstudents_locked');
+
+        // If the site-level config option is locked, then return the site-level
+        // config option no matter what quickmail's config option is.
+        if ($sitelocked) {
+            $config['allowstudents'] = $siteallow;
+        }
+        // END UCLA MOD CCLE-4166
         return $config;
     }
 
